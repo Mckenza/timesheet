@@ -1,23 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import react from "react";
+
+import DivList from "./main/list/DivList";
+import DivContent from "./main/content/DivContent";
+
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="wrap_content_all">
+      <header>
+          {
+            /*
+            кнопка регистрации, время, дата, название сайта....
+             */
+          }
+        </header>
+        <main>
+          <DivList/>
+          <DivContent/>
+        </main>
+
+        <footer>
+
+        </footer>
     </div>
   );
 }
