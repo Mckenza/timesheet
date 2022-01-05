@@ -1,7 +1,8 @@
-import react, { useEffect, useState } from "react";
+import react, { useContext, useEffect, useState } from "react";
+import { AppContext } from "../../App";
 
 export default () => {
-    console.log(1);
+    const appContext = useContext(AppContext);
 
     const [info, setInfo] = useState({
         fio: '',
@@ -19,7 +20,7 @@ export default () => {
     }
     
     function sendData(){
-        console.log(info);
+        appContext.createItemList(info);
     }
 
     useEffect(() => {
