@@ -1,4 +1,5 @@
 import react, { useRef } from "react";
+import { Link } from "react-router-dom";
 
 
 export default ({divlistView}) => {
@@ -6,7 +7,9 @@ export default ({divlistView}) => {
 
     return (
         <div ref = {refManage} className="manage_buttons_list">
-            <button onClick={() => console.log('234')}>Добавить</button>
+            <Link to='/input'>
+                Добавить
+            </Link>
             <button onClick={() => {divlistView(refManage.current)}}>&lArr;</button>
         </div>
     )
