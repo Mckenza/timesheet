@@ -71,6 +71,48 @@ main {
         font-size: 25px;
         transition-duration: 1s; }
 
+.wrap_calendar {
+  height: 100%;
+  width: 100%; }
+  .wrap_calendar .manage_calendar {
+    height: 50px;
+    width: 100%;
+    background-color: blue; }
+  .wrap_calendar .calendar {
+    height: 100%;
+    width: 100%; }
+    .wrap_calendar .calendar .table_calendar {
+      height: 25px;
+      width: 100%;
+      background-color: bisque; }
+      .wrap_calendar .calendar .table_calendar ul {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        list-style: none;
+        justify-content: space-around; }
+        .wrap_calendar .calendar .table_calendar ul li {
+          height: 100%;
+          width: 14.2%;
+          text-align: center;
+          border-right: 2px black solid;
+          box-sizing: border-box; }
+          .wrap_calendar .calendar .table_calendar ul li:last-child {
+            border-right: none; }
+    .wrap_calendar .calendar .calendar_content {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around; }
+      .wrap_calendar .calendar .calendar_content > * {
+        height: 80px;
+        width: 14.2%;
+        border-right: 2px solid black;
+        box-sizing: border-box; }
+      .wrap_calendar .calendar .calendar_content > *:nth-child(7n) {
+        border: none; }
+
 footer {
   height: 6vh;
   width: 100%;

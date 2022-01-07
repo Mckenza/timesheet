@@ -107,6 +107,68 @@ main{
     }
 }
 
+.wrap_calendar{
+    height: 100%;
+    width: 100%;
+
+    .manage_calendar{
+        height: 50px;
+        width: 100%;
+        background-color: blue;
+    }
+
+    .calendar{
+        height: 100%;
+        width: 100%;
+
+        .table_calendar{
+            height: 25px;
+            width: 100%;
+            background-color: bisque;
+            
+            ul{
+                display: flex;
+                height: 100%;
+                width: 100%;
+                list-style: none;
+                justify-content: space-around;
+
+                li{
+                    height: 100%;
+                    width: 14.2%;
+                    text-align: center;
+                    border-right: 2px black solid;
+                    box-sizing: border-box;
+
+                    &:last-child{
+                        border-right: none;
+                    }
+                }
+            }
+        }
+
+        .calendar_content{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+
+            & > *{
+                height: 80px;
+                width: 14.2%;
+                border-right: 2px solid black;
+                box-sizing: border-box;
+            }
+
+            & > *:nth-child(7n){
+                border: none;
+            }
+        }
+    }
+}
+
+
 
 
 
