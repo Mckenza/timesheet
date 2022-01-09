@@ -4,7 +4,6 @@ import ItemList from "./ItemList";
 import ManageList from "./ManageList";
 
 export default () => {
-    console.log(1);
     const appContext = useContext(AppContext);
     const divList = useRef(null);
     const [list, setList] = useState([]);
@@ -13,11 +12,10 @@ export default () => {
 
     useEffect(() => {
         divMain = document.querySelector('.main_content');
-        console.log(divMain)
     }, [list])
 
     appContext.updateList(
-        function updateList(data){
+        function updateList(data) {
             setList(prev => {
                 return prev.concat(data);
             })
@@ -27,7 +25,7 @@ export default () => {
     function changeViewList(manageDiv) {
         divList.current.classList.toggle('view_list');
         divMain.classList.toggle('view_list');
-        if(divList.current.classList.contains('view_list')){
+        if (divList.current.classList.contains('view_list')) {
             manageDiv.lastElementChild.innerHTML = '&rArr;';
         } else {
             manageDiv.lastElementChild.innerHTML = '&lArr;';
@@ -35,13 +33,21 @@ export default () => {
     }
 
     return (
-        <div ref = {divList} className="list_employees">
-            <ManageList divlistView = {changeViewList}/>
-            {
-                list.map((item, index) => {
-                    return <ItemList data = {item} key={index}/>
-                })
-            }
+        <div ref={divList} className="list_employees">
+            <ManageList divlistView={changeViewList} />
+            <div className="list_empls_wrap">
+                <div className="item_list">
+                    <span className="item_list_name">Буяк Евгений Иванович</span>
+                    <span className="item_list_position">Администратолр сети</span>
+                    <span className="itel_list_date">Дата рождения: 17.12.1996</span>
+                </div>
+                {
+                    list.map((item, index) => {
+                        return <ItemList data={item} key={index} />
+                    })
+                }
+            </div>
+
         </div>
     )
 }

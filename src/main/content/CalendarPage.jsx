@@ -95,8 +95,8 @@ export default () => {
                         <li>Суббота</li>
                         <li>Воскресенье</li>
                     </ul>
-                    <Calendar data = {calendarData}/>
                 </div>
+                <Calendar data = {calendarData}/>
             </div>
         </div>
     )

@@ -1,13 +1,15 @@
 import react from "react";
+import { Link } from "react-router-dom";
 
 export default ({data}) => {
     const {date, fio, position} = data;
 
     return (
         <div className="item_list">
-            <span>{fio}</span>
-            <span>{position}</span>
-            <span>{date}</span>
+            <Link to='/calendar' className="open_calendar"/>
+            <span className="item_list_name">{fio}</span>
+            <span className="item_list_position">{position}</span>
+            <span className="itel_list_date">Дата рождения: {date}</span>
         </div>
     )
 }

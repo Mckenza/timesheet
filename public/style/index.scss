@@ -42,6 +42,43 @@ main{
         &.view_list{
             width: 95%;
         }
+
+        .input_data_about_person{
+            height: 100%;
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+
+            .input_data_wrap{
+                height: 300px;
+                width: 300px;
+                padding: 20px;
+                margin: 0 auto;
+                display: flex;
+                flex-direction: column;
+                justify-content: space-around;
+                background-color: yellow;
+
+
+                & input{
+                    height: 20px;
+                    width: 90%;
+                    margin: 0 auto;
+                }
+
+                button{
+                    width: 40%;
+                    height: 30px;
+                    margin: 0 auto;
+                    border: none;
+                }
+
+                h3{
+                    margin: 0 auto;
+                }
+            } 
+        }
     }
 
     .list_employees{
@@ -60,7 +97,7 @@ main{
         transition-duration: 1s;
 
         .manage_buttons_list{
-            height: 4vh;
+            height: 35px;
             width: 100%;
             background-color: chocolate;
     
@@ -68,16 +105,11 @@ main{
                 border: none;
                 font-size: 25px;
                 padding: 0 10px;
+                margin: 0 auto;
+            }
 
-                
-                &:first-child{
-                    display: none;
-
-                }
-    
-                &:last-child{
-                    margin: 0 auto;
-                }
+            a{
+                display: none;
             }
         }
     }
@@ -93,19 +125,83 @@ main{
             border: none;
             font-size: 16px;
             padding: 0 10px;
-            
-            &:first-child{
-                margin-left: 40px;
-            }
+            margin-right: 10px;
+            font-size: 25px;
+            transition-duration: 1s;
+        }
 
-            &:last-child{
-                margin-right: 10px;
-                font-size: 25px;
-                transition-duration: 1s;
-            }
+        a{
+            background-color: bisque;
+            text-decoration: none;
+            padding: 0 5px;
+            text-align: center;
         }
     }
+
+    .list_empls_wrap{
+        height: calc(100% - 35px);
+        width: 100%;
+        background-color: burlywood;
+
+        overflow: scroll;
+
+        &::-webkit-scrollbar{
+            width: 0;
+            height: 0;
+        }
+
+        .item_list{
+            height: 100px;
+            max-width: 100%;
+            background-color: cadetblue;
+            margin: 3px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+
+            .open_calendar{
+                position: absolute;
+                height: 100%;
+                width: 100%;
+                z-index: 100;
+            }
+
+           span{
+               width: 90%;
+               color: white;
+               display: block;
+           }
+
+           .item_list_name{
+               height: 40%;
+               margin-top: 5px;
+               margin-left: 5px;
+               font-size: 22px;
+           }
+
+           .item_list_position{
+               height: 30%;
+               font-size: 18px;
+               margin-left: 5px;
+           }
+
+           .itel_list_date{
+               width: 100%;
+               height: 16px;
+               margin: 0 5px 5px 0;
+               font-size: 14px;
+               color: rgba(255, 255, 255, 0.734);
+               position: absolute;
+               right: 0;
+               bottom: 0;
+               text-align: end;
+           }
+
+
+        }
+    }   
 }
+
 
 .wrap_calendar{
     height: 100%;
@@ -118,7 +214,7 @@ main{
     }
 
     .calendar{
-        height: 100%;
+        height: calc(100% - 75px);
         width: 100%;
 
         .table_calendar{
@@ -137,8 +233,10 @@ main{
                     height: 100%;
                     width: 14.2%;
                     text-align: center;
-                    border-right: 2px black solid;
                     box-sizing: border-box;
+                    border-top-left-radius: 10px;
+                    border-top-right-radius: 10px;
+                    background-color: azure;
 
                     &:last-child{
                         border-right: none;
@@ -148,21 +246,37 @@ main{
         }
 
         .calendar_content{
-            height: 100%;
+            max-height: 100%;
             width: 100%;
             display: flex;
             flex-wrap: wrap;
             justify-content: space-around;
+            overflow: scroll;
+            &::-webkit-scrollbar{
+                width: 0;
+                height: 0;
+            }
 
             & > *{
-                height: 80px;
+                height: 120px;
+                transition-duration: 0.5s;
                 width: 14.2%;
-                border-right: 2px solid black;
                 box-sizing: border-box;
+                border-radius: 10px;
+                background-color: beige;
+                border-left: 4px solid transparent;
+                border-top: 4px solid transparent;
+                border-bottom: 4px solid transparent;
+                background-clip: content-box;  
             }
 
             & > *:nth-child(7n){
-                border: none;
+                border-right: 4px solid transparent;
+            }
+
+            & > *:hover:not(.blank_item_calendar){
+                transition-duration: 0.5s;
+                height: 200px;
             }
         }
     }
