@@ -207,14 +207,30 @@ main{
     height: 100%;
     width: 100%;
 
-    .manage_calendar{
-        height: 50px;
+    .manage_calendar_wrap{
+        height: 150px;
         width: 100%;
         background-color: blue;
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+
+        .manage_calendar{
+            height: 100%;
+            width: 50%;
+            background-color: aqua;
+        }
+
+        .data_about_person{
+            height: 100%;
+            width: 50%;
+            background-color: brown;
+        }
+
     }
 
     .calendar{
-        height: calc(100% - 75px);
+        height: calc(100% - 175px);
         width: 100%;
 
         .table_calendar{

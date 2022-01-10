@@ -1,5 +1,7 @@
 import react, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
 import Calendar from "./Calendar";
+
 /* Сделать список по месяцам и года */
 
 function createCalendar(month, year) {
@@ -51,7 +53,10 @@ function createCalendar(month, year) {
     return calendar;
 }
 
-export default () => {
+export default (props) => {
+
+   
+
     const [month, setMonth] = useState(() => new Date().getMonth());
     const [year, setYear] = useState(() => new Date().getFullYear());
     const [calendarData, setCalendarData] = useState([]);
@@ -66,23 +71,32 @@ export default () => {
 
     return (
         <div className="wrap_calendar">
-            <div className="manage_calendar">
-                <select onChange={(e) => { setMonth(Number(e.target.value)) }}>
-                    <option disabled selected>Выбор месяца</option>
-                    <option value="0">Январь</option>
-                    <option value="1">Февраль</option>
-                    <option value="2">Март</option>
-                    <option value="3">Апрель</option>
-                    <option value="4">Май</option>
-                    <option value="5">Июнь</option>
-                    <option value="6">Июль</option>
-                    <option value="7">Август</option>
-                    <option value="8">Сентябрь</option>
-                    <option value="9">Октябрь</option>
-                    <option value="10">Ноябрь</option>
-                    <option value="11">Декабрь</option>
-                </select>
-                <input type="number" onChange={(e) => { setYear(Number(e.target.value)) }}></input>
+            <div className="manage_calendar_wrap">
+                <div className="manage_calendar">
+                    <select value={month} onChange={(e) => { setMonth(Number(e.target.value)) }}>
+                        
+                        <option value="0">Январь</option>
+                        <option value="1">Февраль</option>
+                        <option value="2">Март</option>
+                        <option value="3">Апрель</option>
+                        <option value="4">Май</option>
+                        <option value="5">Июнь</option>
+                        <option value="6">Июль</option>
+                        <option value="7">Август</option>
+                        <option value="8">Сентябрь</option>
+                        <option value="9">Октябрь</option>
+                        <option value="10">Ноябрь</option>
+                        <option value="11">Декабрь</option>
+                    </select>
+                    <input type="number" onChange={(e) => { setYear(Number(e.target.value)) }}></input>
+                </div>
+                <div className="data_about_person">
+                    <div className="info_person">
+                        <span className="fio_info_person"></span>
+                        <span className="position_info_person"></span>
+                        
+                    </div>
+                </div>
             </div>
             <div className="calendar">
                 <div className="table_calendar">
@@ -96,7 +110,7 @@ export default () => {
                         <li>Воскресенье</li>
                     </ul>
                 </div>
-                <Calendar data = {calendarData}/>
+                <Calendar data={calendarData} />
             </div>
         </div>
     )

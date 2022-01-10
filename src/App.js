@@ -17,7 +17,6 @@ function App() {
     refListUpdate.current = callback;
   }
 
-
   return (
     <div className="wrap_content_all">
       <header>

@@ -10,7 +10,7 @@ export default () => {
             
             <Routes>
                 <Route path='/input' element={<FieldForData />} />
-                <Route path='/calendar' element = {<CalendarPage/>}/>
+                <Route path='/calendar/:id' element = {<CalendarPage/>}/>
             </Routes>
 
         </div>
