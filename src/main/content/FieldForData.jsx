@@ -1,6 +1,10 @@
 import react, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../App";
 
+function saveInLocalStorage(data){
+
+}
+
 export default () => {
     const appContext = useContext(AppContext);
 
@@ -8,6 +12,7 @@ export default () => {
         fio: '',
         position: '',
         date: '',
+        id: 0,
     });
 
     function saveData(e) {
@@ -20,6 +25,17 @@ export default () => {
     }
 
     function sendData() {
+        const copyState = {
+            ...info,
+            id: Number(JSON.parse(localStorage.getItem('current_Id'))),
+        }
+        const dataFromStorage = JSON.parse(localStorage.getItem('arrayData'));
+        dataFromStorage.push(copyState);
+        console.log(dataFromStorage);
+        localStorage.setItem('arrayData', JSON.stringify(dataFromStorage));
+        const currentId = JSON.parse(localStorage.getItem('current_Id'));
+        localStorage.setItem('current_Id', JSON.stringify(currentId + 1));
+
         appContext.createItemList(info);
     }
 
