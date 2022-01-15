@@ -5,7 +5,6 @@ import Calendar from "./Calendar";
 /* Сделать список по месяцам и года */
 
 function createCalendar(month, year) {
-    console.log(123)
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const calendar = [];
 
@@ -53,13 +52,27 @@ function createCalendar(month, year) {
     return calendar;
 }
 
-export default (props) => {
+function dataFromStorage(id){
+    const allInfo = JSON.parse(localStorage.getItem('arrayData'));
 
-   
+    for(let buf of allInfo){
+        if(Number(buf.id) === Number(id)){
+            return buf;
+        }
+    }
+}
+
+export default () => {
+
+    const idUser = useParams();
+    if(!localStorage.getItem(`empl_data_${idUser.id}`)){
+        localStorage.setItem(`empl_data_${idUser.id}`, JSON.stringify({}));
+    }
 
     const [month, setMonth] = useState(() => new Date().getMonth());
     const [year, setYear] = useState(() => new Date().getFullYear());
     const [calendarData, setCalendarData] = useState([]);
+    const [dataEmpl, setDataEmpl] = useState({});
 
     useEffect(() => {
         console.log(month);
@@ -68,6 +81,18 @@ export default (props) => {
         console.log(calendarData);
     }, [month, year]);
 
+    useEffect(() => {
+        setDataEmpl(prev => {
+            return {
+                ...prev,
+                ...dataFromStorage(idUser.id),
+            }
+        });
+    }, [idUser.id])
+
+    useEffect(() => {
+        console.log(dataEmpl);
+    })
 
     return (
         <div className="wrap_calendar">
@@ -92,9 +117,8 @@ export default (props) => {
                 </div>
                 <div className="data_about_person">
                     <div className="info_person">
-                        <span className="fio_info_person"></span>
-                        <span className="position_info_person"></span>
-                        
+                        <span className="fio_info_person">{dataEmpl.fio}</span>
+                        <span className="position_info_person">{dataEmpl.position}</span>
                     </div>
                 </div>
             </div>
@@ -110,7 +134,7 @@ export default (props) => {
                         <li>Воскресенье</li>
                     </ul>
                 </div>
-                <Calendar data={calendarData} />
+                <Calendar yearMonth = {{year, month}} data={calendarData} idUserProp = {idUser}/>
             </div>
         </div>
     )

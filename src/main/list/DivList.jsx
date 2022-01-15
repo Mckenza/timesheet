@@ -3,12 +3,20 @@ import { AppContext } from "../../App";
 import ItemList from "./ItemList";
 import ManageList from "./ManageList";
 
+function getDataFromLocalStorage(){
+    return JSON.parse(localStorage.getItem('arrayData'));
+}
+
 export default () => {
     const appContext = useContext(AppContext);
     const divList = useRef(null);
     const [list, setList] = useState([]);
 
     let divMain = null;
+
+    useEffect(() => {
+        setList(getDataFromLocalStorage());
+    }, [])
 
     useEffect(() => {
         divMain = document.querySelector('.main_content');
@@ -43,7 +51,7 @@ export default () => {
                 </div>
                 {
                     list.map((item, index) => {
-                        return <ItemList data={item} key={index} />
+                        return <ItemList data={item} key={item.id} />
                     })
                 }
             </div>

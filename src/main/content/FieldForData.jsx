@@ -29,19 +29,15 @@ export default () => {
             ...info,
             id: Number(JSON.parse(localStorage.getItem('current_Id'))),
         }
+        console.log(copyState.id)
         const dataFromStorage = JSON.parse(localStorage.getItem('arrayData'));
         dataFromStorage.push(copyState);
-        console.log(dataFromStorage);
         localStorage.setItem('arrayData', JSON.stringify(dataFromStorage));
         const currentId = JSON.parse(localStorage.getItem('current_Id'));
         localStorage.setItem('current_Id', JSON.stringify(currentId + 1));
 
-        appContext.createItemList(info);
+        appContext.createItemList(copyState);
     }
-
-    useEffect(() => {
-        console.log(info);
-    })
 
     return (
         <div className="input_data_about_person">

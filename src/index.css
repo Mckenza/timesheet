@@ -1,0 +1,218 @@
+* {
+  padding: 0;
+  margin: 0; }
+
+body {
+  height: 100vh;
+  width: 100%; }
+  body #root {
+    height: 100%;
+    width: 1500px;
+    background-color: aqua;
+    margin: 0 auto; }
+
+.wrap_content_all {
+  height: 100%;
+  width: 100%; }
+
+header {
+  width: 100%;
+  height: 6vh;
+  background-color: black; }
+
+main {
+  height: 88vh;
+  width: 100%;
+  background-color: blue;
+  display: flex; }
+  main .main_content {
+    transition-duration: 1s;
+    height: 100%;
+    width: 80%;
+    background-color: cadetblue; }
+    main .main_content.view_list {
+      width: 95%; }
+    main .main_content .input_data_about_person {
+      height: 100%;
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center; }
+      main .main_content .input_data_about_person .input_data_wrap {
+        height: 300px;
+        width: 300px;
+        padding: 20px;
+        margin: 0 auto;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        background-color: yellow; }
+        main .main_content .input_data_about_person .input_data_wrap input {
+          height: 20px;
+          width: 90%;
+          margin: 0 auto; }
+        main .main_content .input_data_about_person .input_data_wrap button {
+          width: 40%;
+          height: 30px;
+          margin: 0 auto;
+          border: none; }
+        main .main_content .input_data_about_person .input_data_wrap h3 {
+          margin: 0 auto; }
+  main .list_employees {
+    height: 100%;
+    width: 20%;
+    background-color: chartreuse; }
+
+.list_employees {
+  transition-duration: 1s; }
+  .list_employees.view_list {
+    width: 5%;
+    transition-duration: 1s; }
+    .list_employees.view_list .manage_buttons_list {
+      height: 35px;
+      width: 100%;
+      background-color: chocolate; }
+      .list_employees.view_list .manage_buttons_list button {
+        border: none;
+        font-size: 25px;
+        padding: 0 10px;
+        margin: 0 auto; }
+      .list_employees.view_list .manage_buttons_list a {
+        display: none; }
+  .list_employees .manage_buttons_list {
+    height: 4vh;
+    width: 100%;
+    background-color: chocolate;
+    display: flex;
+    justify-content: space-between; }
+    .list_employees .manage_buttons_list button {
+      border: none;
+      font-size: 16px;
+      padding: 0 10px;
+      margin-right: 10px;
+      font-size: 25px;
+      transition-duration: 1s; }
+    .list_employees .manage_buttons_list a {
+      background-color: bisque;
+      text-decoration: none;
+      padding: 0 5px;
+      text-align: center; }
+  .list_employees .list_empls_wrap {
+    height: calc(100% - 35px);
+    width: 100%;
+    background-color: burlywood;
+    overflow: scroll; }
+    .list_employees .list_empls_wrap::-webkit-scrollbar {
+      width: 0;
+      height: 0; }
+    .list_employees .list_empls_wrap .item_list {
+      height: 100px;
+      max-width: 100%;
+      background-color: cadetblue;
+      margin: 3px;
+      display: flex;
+      flex-direction: column;
+      position: relative; }
+      .list_employees .list_empls_wrap .item_list .open_calendar {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+        z-index: 100; }
+      .list_employees .list_empls_wrap .item_list span {
+        width: 90%;
+        color: white;
+        display: block; }
+      .list_employees .list_empls_wrap .item_list .item_list_name {
+        height: 40%;
+        margin-top: 5px;
+        margin-left: 5px;
+        font-size: 22px; }
+      .list_employees .list_empls_wrap .item_list .item_list_position {
+        height: 30%;
+        font-size: 18px;
+        margin-left: 5px; }
+      .list_employees .list_empls_wrap .item_list .itel_list_date {
+        width: 100%;
+        height: 16px;
+        margin: 0 5px 5px 0;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.734);
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        text-align: end; }
+
+.wrap_calendar {
+  height: 100%;
+  width: 100%; }
+  .wrap_calendar .manage_calendar_wrap {
+    height: 150px;
+    width: 100%;
+    background-color: blue;
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row; }
+    .wrap_calendar .manage_calendar_wrap .manage_calendar {
+      height: 100%;
+      width: 50%;
+      background-color: aqua; }
+    .wrap_calendar .manage_calendar_wrap .data_about_person {
+      height: 100%;
+      width: 50%;
+      background-color: brown; }
+  .wrap_calendar .calendar {
+    height: calc(100% - 175px);
+    width: 100%; }
+    .wrap_calendar .calendar .table_calendar {
+      height: 25px;
+      width: 100%;
+      background-color: bisque; }
+      .wrap_calendar .calendar .table_calendar ul {
+        display: flex;
+        height: 100%;
+        width: 100%;
+        list-style: none;
+        justify-content: space-around; }
+        .wrap_calendar .calendar .table_calendar ul li {
+          height: 100%;
+          width: 14.2%;
+          text-align: center;
+          box-sizing: border-box;
+          border-top-left-radius: 10px;
+          border-top-right-radius: 10px;
+          background-color: azure; }
+          .wrap_calendar .calendar .table_calendar ul li:last-child {
+            border-right: none; }
+    .wrap_calendar .calendar .calendar_content {
+      max-height: 100%;
+      width: 100%;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      overflow: scroll; }
+      .wrap_calendar .calendar .calendar_content::-webkit-scrollbar {
+        width: 0;
+        height: 0; }
+      .wrap_calendar .calendar .calendar_content > * {
+        height: 120px;
+        transition-duration: 0.5s;
+        width: 14.2%;
+        box-sizing: border-box;
+        border-radius: 10px;
+        background-color: beige;
+        border-left: 4px solid transparent;
+        border-top: 4px solid transparent;
+        border-bottom: 4px solid transparent;
+        background-clip: content-box; }
+      .wrap_calendar .calendar .calendar_content > *:nth-child(7n) {
+        border-right: 4px solid transparent; }
+      .wrap_calendar .calendar .calendar_content > *:hover:not(.blank_item_calendar) {
+        transition-duration: 0.5s;
+        height: 200px; }
+
+footer {
+  height: 6vh;
+  width: 100%;
+  background-color: brown; }
+
+/*# sourceMappingURL=index.css.map */
