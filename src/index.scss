@@ -219,6 +219,77 @@ main{
             height: 100%;
             width: 50%;
             background-color: aqua;
+
+            .change_date_for_calendar{
+                height: 30px;
+                width: 100%;
+            }
+
+            .buttons_manage_calendar{
+                height: 100px;
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+
+                .value_buttons{
+                    height: 100%;
+                    width: 50%;
+                    display: flex;
+                    flex-direction: column;
+
+                }
+
+                .value_time_work{
+                    height: 100%;
+                    width: 50%;
+                    display: flex;
+                    flex-direction: column;
+
+                    .block_1_time_work, .block_2_time_work{
+                        margin-bottom: 15px;
+                        height: 20px;
+                        width: 100%;
+                        display: flex;
+                        justify-content: left;
+                        & input{
+                            width: 20%;
+                        }
+                    }
+
+                    .button_save{
+                        height: 20%;
+                        width: 100%;
+                        display: flex;
+                        justify-content: center;
+
+                        .start_edit_calendar{
+                            display: none;
+                        }
+
+                        .apply_changes_calendar{
+                            display: block;
+                        }
+
+                        .save_changes_calendar{
+                            display: block;
+                            margin-left: 10px;
+                        }
+
+                        .start_edit_calendar.view_button_{
+                            display: block;
+                            margin: 0 auto;
+                        }
+
+                        .apply_changes_calendar.view_button_{
+                            display: none;
+                        }
+
+                        .save_changes_calendar.view_button_{
+                            display: none;
+                        }
+                    }
+                }
+            }
         }
 
         .data_about_person{

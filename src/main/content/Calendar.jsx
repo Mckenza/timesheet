@@ -24,7 +24,6 @@ export default ({yearMonth, data, idUserProp}) => {
     return (
         <div className="calendar_content">
             {
-                console.log(data),
                 data.map((value, index) => {
                     if(value.type === 'blank'){
                         return <div className="blank_item_calendar" key={index}>
