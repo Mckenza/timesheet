@@ -2,13 +2,17 @@
   padding: 0;
   margin: 0; }
 
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none; }
+
 body {
   height: 100vh;
-  width: 100%; }
+  width: 100%;
+  background-color: #373737; }
   body #root {
     height: 100%;
     width: 1500px;
-    background-color: aqua;
     margin: 0 auto; }
 
 .wrap_content_all {
@@ -17,13 +21,14 @@ body {
 
 header {
   width: 100%;
-  height: 6vh;
-  background-color: black; }
+  height: 5vh;
+  border-bottom: 3px white solid;
+  box-sizing: border-box;
+  margin-bottom: 5px; }
 
 main {
   height: 88vh;
   width: 100%;
-  background-color: blue;
   display: flex; }
   main .main_content {
     transition-duration: 1s;
@@ -45,8 +50,7 @@ main {
         margin: 0 auto;
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
-        background-color: yellow; }
+        justify-content: space-around; }
         main .main_content .input_data_about_person .input_data_wrap input {
           height: 20px;
           width: 90%;
@@ -60,8 +64,7 @@ main {
           margin: 0 auto; }
   main .list_employees {
     height: 100%;
-    width: 20%;
-    background-color: chartreuse; }
+    width: 20%; }
 
 .list_employees {
   transition-duration: 1s; }
@@ -70,8 +73,7 @@ main {
     transition-duration: 1s; }
     .list_employees.view_list .manage_buttons_list {
       height: 35px;
-      width: 100%;
-      background-color: chocolate; }
+      width: 100%; }
       .list_employees.view_list .manage_buttons_list button {
         border: none;
         font-size: 25px;
@@ -80,27 +82,31 @@ main {
       .list_employees.view_list .manage_buttons_list a {
         display: none; }
   .list_employees .manage_buttons_list {
-    height: 4vh;
+    height: 40px;
     width: 100%;
-    background-color: chocolate;
     display: flex;
-    justify-content: space-between; }
+    justify-content: space-between;
+    border-bottom: 2px white solid;
+    padding: 0 0 5px 0; }
     .list_employees .manage_buttons_list button {
       border: none;
-      font-size: 16px;
+      background-color: transparent;
+      color: white;
       padding: 0 10px;
-      margin-right: 10px;
+      margin-right: 6px;
       font-size: 25px;
       transition-duration: 1s; }
     .list_employees .manage_buttons_list a {
-      background-color: bisque;
       text-decoration: none;
-      padding: 0 5px;
-      text-align: center; }
+      padding: 8px 20px;
+      text-align: center;
+      border: 2px white solid;
+      color: white;
+      margin: auto 10px;
+      display: flex; }
   .list_employees .list_empls_wrap {
-    height: calc(100% - 35px);
+    height: calc(100% - 47px);
     width: 100%;
-    background-color: burlywood;
     overflow: scroll; }
     .list_employees .list_empls_wrap::-webkit-scrollbar {
       width: 0;
@@ -108,11 +114,14 @@ main {
     .list_employees .list_empls_wrap .item_list {
       height: 100px;
       max-width: 100%;
-      background-color: cadetblue;
-      margin: 3px;
+      margin: 5px;
       display: flex;
       flex-direction: column;
-      position: relative; }
+      position: relative;
+      background-color: #777777; }
+      .list_employees .list_empls_wrap .item_list:hover {
+        border-bottom: 3px white solid;
+        transition: 0.3s; }
       .list_employees .list_empls_wrap .item_list .open_calendar {
         position: absolute;
         height: 100%;
@@ -148,17 +157,30 @@ main {
   .wrap_calendar .manage_calendar_wrap {
     height: 150px;
     width: 100%;
-    background-color: blue;
     display: flex;
     justify-content: space-between;
     flex-direction: row; }
     .wrap_calendar .manage_calendar_wrap .manage_calendar {
       height: 100%;
-      width: 50%;
-      background-color: aqua; }
+      width: 50%; }
       .wrap_calendar .manage_calendar_wrap .manage_calendar .change_date_for_calendar {
         height: 30px;
         width: 100%; }
+        .wrap_calendar .manage_calendar_wrap .manage_calendar .change_date_for_calendar span {
+          color: white;
+          margin: 0 10px; }
+        .wrap_calendar .manage_calendar_wrap .manage_calendar .change_date_for_calendar select, .wrap_calendar .manage_calendar_wrap .manage_calendar .change_date_for_calendar input {
+          border: 2px solid white;
+          width: 30%;
+          background-color: transparent;
+          font-size: 16px;
+          padding: 3px;
+          height: 100%;
+          box-sizing: border-box;
+          color: white;
+          text-align: center; }
+        .wrap_calendar .manage_calendar_wrap .manage_calendar .change_date_for_calendar input {
+          width: 20%; }
       .wrap_calendar .manage_calendar_wrap .manage_calendar .buttons_manage_calendar {
         height: 100px;
         width: 100%;
@@ -203,8 +225,7 @@ main {
               display: none; }
     .wrap_calendar .manage_calendar_wrap .data_about_person {
       height: 100%;
-      width: 50%;
-      background-color: brown; }
+      width: 50%; }
   .wrap_calendar .calendar {
     height: calc(100% - 175px);
     width: 100%; }

@@ -99,6 +99,7 @@ export default () => {
             <div className="manage_calendar_wrap">
                 <div className="manage_calendar">
                     <div className="change_date_for_calendar">
+                        <span>Месяц:</span>
                         <select value={month} onChange={(e) => { setMonth(Number(e.target.value)) }}>
                             <option value="0">Январь</option>
                             <option value="1">Февраль</option>
@@ -113,7 +114,8 @@ export default () => {
                             <option value="10">Ноябрь</option>
                             <option value="11">Декабрь</option>
                         </select>
-                        <input type="number" onChange={(e) => { setYear(Number(e.target.value)) }}></input>
+                        <span>Год:</span>
+                        <input type="number" onChange={(e) => { setYear(Number(e.target.value)) }} value = {year}></input>
                     </div>
                     <div className="buttons_manage_calendar">
                         <div className="value_buttons">
