@@ -1,6 +1,7 @@
 * {
   padding: 0;
-  margin: 0; }
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif; }
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -29,12 +30,12 @@ header {
 main {
   height: 88vh;
   width: 100%;
-  display: flex; }
+  display: flex;
+  margin-top: 15px; }
   main .main_content {
     transition-duration: 1s;
     height: 100%;
-    width: 80%;
-    background-color: cadetblue; }
+    width: 80%; }
     main .main_content.view_list {
       width: 95%; }
     main .main_content .input_data_about_person {
@@ -67,7 +68,8 @@ main {
     width: 20%; }
 
 .list_employees {
-  transition-duration: 1s; }
+  transition-duration: 1s;
+  border-right: 2px white solid; }
   .list_employees.view_list {
     width: 5%;
     transition-duration: 1s; }
@@ -155,7 +157,7 @@ main {
   height: 100%;
   width: 100%; }
   .wrap_calendar .manage_calendar_wrap {
-    height: 150px;
+    height: 155px;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -182,7 +184,7 @@ main {
         .wrap_calendar .manage_calendar_wrap .manage_calendar .change_date_for_calendar input {
           width: 20%; }
       .wrap_calendar .manage_calendar_wrap .manage_calendar .buttons_manage_calendar {
-        height: 100px;
+        height: 120px;
         width: 100%;
         display: flex;
         flex-direction: row; }
@@ -191,24 +193,56 @@ main {
           width: 50%;
           display: flex;
           flex-direction: column; }
+          .wrap_calendar .manage_calendar_wrap .manage_calendar .buttons_manage_calendar .value_buttons input {
+            display: none; }
+          .wrap_calendar .manage_calendar_wrap .manage_calendar .buttons_manage_calendar .value_buttons label {
+            color: white;
+            border: 2px white solid;
+            font-size: 16px;
+            margin: 5px 0 0 10px;
+            width: 70%;
+            height: 25%;
+            display: flex;
+            align-items: center;
+            justify-content: center; }
+            .wrap_calendar .manage_calendar_wrap .manage_calendar .buttons_manage_calendar .value_buttons label:nth-child(2) {
+              margin-top: 5px; }
         .wrap_calendar .manage_calendar_wrap .manage_calendar .buttons_manage_calendar .value_time_work {
           height: 100%;
           width: 50%;
           display: flex;
-          flex-direction: column; }
+          flex-direction: column;
+          color: white;
+          margin-top: 5px; }
+          .wrap_calendar .manage_calendar_wrap .manage_calendar .buttons_manage_calendar .value_time_work span {
+            margin-bottom: 5px; }
           .wrap_calendar .manage_calendar_wrap .manage_calendar .buttons_manage_calendar .value_time_work .block_1_time_work, .wrap_calendar .manage_calendar_wrap .manage_calendar .buttons_manage_calendar .value_time_work .block_2_time_work {
-            margin-bottom: 15px;
+            margin-bottom: 13px;
             height: 20px;
             width: 100%;
             display: flex;
             justify-content: left; }
+            .wrap_calendar .manage_calendar_wrap .manage_calendar .buttons_manage_calendar .value_time_work .block_1_time_work label, .wrap_calendar .manage_calendar_wrap .manage_calendar .buttons_manage_calendar .value_time_work .block_2_time_work label {
+              margin: 0 3px; }
             .wrap_calendar .manage_calendar_wrap .manage_calendar .buttons_manage_calendar .value_time_work .block_1_time_work input, .wrap_calendar .manage_calendar_wrap .manage_calendar .buttons_manage_calendar .value_time_work .block_2_time_work input {
-              width: 20%; }
+              width: 20%;
+              border: none;
+              border-bottom: 2px white solid;
+              background-color: transparent;
+              text-align: center;
+              color: white; }
+          .wrap_calendar .manage_calendar_wrap .manage_calendar .buttons_manage_calendar .value_time_work .block_1_time_work label:nth-child(1) {
+            margin-left: 11px; }
           .wrap_calendar .manage_calendar_wrap .manage_calendar .buttons_manage_calendar .value_time_work .button_save {
             height: 20%;
             width: 100%;
             display: flex;
             justify-content: center; }
+            .wrap_calendar .manage_calendar_wrap .manage_calendar .buttons_manage_calendar .value_time_work .button_save * {
+              border: 2px white solid;
+              background-color: transparent;
+              color: white;
+              padding: 0 5px; }
             .wrap_calendar .manage_calendar_wrap .manage_calendar .buttons_manage_calendar .value_time_work .button_save .start_edit_calendar {
               display: none; }
             .wrap_calendar .manage_calendar_wrap .manage_calendar .buttons_manage_calendar .value_time_work .button_save .apply_changes_calendar {

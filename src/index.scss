@@ -1,6 +1,7 @@
 *{
     padding: 0;
     margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 input::-webkit-outer-spin-button,
@@ -37,13 +38,12 @@ main{
     height: 88vh;
     width: 100%;
     display: flex;
-    
+    margin-top: 15px;
 
     .main_content{
         transition-duration: 1s;
         height: 100%;
         width: 80%;
-        background-color: cadetblue;
 
         &.view_list{
             width: 95%;
@@ -94,6 +94,7 @@ main{
 
 .list_employees{
     transition-duration: 1s;
+    border-right: 2px white solid;
 
     &.view_list{
         width: 5%;
@@ -221,7 +222,7 @@ main{
     width: 100%;
 
     .manage_calendar_wrap{
-        height: 150px;
+        height: 155px;
         width: 100%;
         display: flex;
         justify-content: space-between;
@@ -259,7 +260,7 @@ main{
             }
 
             .buttons_manage_calendar{
-                height: 100px;
+                height: 120px;
                 width: 100%;
                 display: flex;
                 flex-direction: row;
@@ -270,6 +271,26 @@ main{
                     display: flex;
                     flex-direction: column;
 
+                    input{
+                        display: none;
+                    }
+
+                    label{
+                        color: white;
+                        border: 2px white solid;
+                        font-size: 16px;
+                        margin: 5px 0 0 10px;
+                        width: 70%;
+                        height: 25%;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+
+
+                        &:nth-child(2){
+                            margin-top: 5px;
+                        }
+                    }
                 }
 
                 .value_time_work{
@@ -277,16 +298,36 @@ main{
                     width: 50%;
                     display: flex;
                     flex-direction: column;
+                    color: white;
+                    margin-top: 5px;
+
+                    span{
+                        margin-bottom: 5px;
+                    }
 
                     .block_1_time_work, .block_2_time_work{
-                        margin-bottom: 15px;
+                        margin-bottom: 13px;
                         height: 20px;
                         width: 100%;
                         display: flex;
                         justify-content: left;
+
+                        label{
+                            margin: 0 3px;
+                        }
+
                         & input{
                             width: 20%;
+                            border: none;
+                            border-bottom: 2px white solid;
+                            background-color: transparent;
+                            text-align: center;
+                            color: white;
                         }
+                    }
+
+                    .block_1_time_work label:nth-child(1){
+                        margin-left: 11px;
                     }
 
                     .button_save{
@@ -294,6 +335,13 @@ main{
                         width: 100%;
                         display: flex;
                         justify-content: center;
+
+                        & *{
+                            border: 2px white solid;
+                            background-color: transparent;
+                            color: white;
+                            padding: 0 5px;
+                        }
 
                         .start_edit_calendar{
                             display: none;

@@ -119,7 +119,7 @@ export default () => {
                     </div>
                     <div className="buttons_manage_calendar">
                         <div className="value_buttons">
-                            <input type='radio' name="type_day" id="main_work" />
+                            <input onClick={() => {console.log(111)}} type='radio' name="type_day" id="main_work" />
                             <label for="main_work">Основная деятельность</label>
                             <input type='radio' name="type_day" id="add_work"></input>
                             <label for="add_work">Заместительство</label>
