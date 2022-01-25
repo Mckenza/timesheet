@@ -16,8 +16,8 @@ export default ({data, saveData}) => {
 
     return (
         <div className="item_calendar">
-            <span>{data.numberDay}</span>
-            <span>{data.day}</span>
+            <span class = "number_day">{data.numberDay}</span>
+            
         </div>
     )
 }

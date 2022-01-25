@@ -259,14 +259,26 @@ main {
               display: none; }
     .wrap_calendar .manage_calendar_wrap .data_about_person {
       height: 100%;
-      width: 50%; }
+      width: 50%;
+      display: flex;
+      flex-direction: column; }
+      .wrap_calendar .manage_calendar_wrap .data_about_person .info_person {
+        height: 100%;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: right; }
+        .wrap_calendar .manage_calendar_wrap .data_about_person .info_person span {
+          display: block;
+          color: white;
+          font-size: 20px;
+          text-align: right; }
   .wrap_calendar .calendar {
-    height: calc(100% - 175px);
+    height: calc(100% - 180px);
     width: 100%; }
     .wrap_calendar .calendar .table_calendar {
       height: 25px;
-      width: 100%;
-      background-color: bisque; }
+      width: 100%; }
       .wrap_calendar .calendar .table_calendar ul {
         display: flex;
         height: 100%;
@@ -275,12 +287,15 @@ main {
         justify-content: space-around; }
         .wrap_calendar .calendar .table_calendar ul li {
           height: 100%;
-          width: 14.2%;
+          width: 12%;
           text-align: center;
           box-sizing: border-box;
-          border-top-left-radius: 10px;
-          border-top-right-radius: 10px;
-          background-color: azure; }
+          background-color: transparent;
+          border-bottom: 3px white solid;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          color: white; }
           .wrap_calendar .calendar .table_calendar ul li:last-child {
             border-right: none; }
     .wrap_calendar .calendar .calendar_content {
@@ -296,16 +311,21 @@ main {
       .wrap_calendar .calendar .calendar_content > * {
         height: 120px;
         transition-duration: 0.5s;
-        width: 14.2%;
+        width: 13.3%;
+        margin: 5px;
+        position: relative;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        box-shadow: 2px 2px 9px black, inset 4px 4px 9px darkgray;
         box-sizing: border-box;
-        border-radius: 10px;
-        background-color: beige;
-        border-left: 4px solid transparent;
-        border-top: 4px solid transparent;
-        border-bottom: 4px solid transparent;
-        background-clip: content-box; }
-      .wrap_calendar .calendar .calendar_content > *:nth-child(7n) {
-        border-right: 4px solid transparent; }
+        background-color: white; }
+        .wrap_calendar .calendar .calendar_content > * .number_day {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          font-size: 40px;
+          font-weight: bold;
+          letter-spacing: 3px; }
       .wrap_calendar .calendar .calendar_content > *:hover:not(.blank_item_calendar) {
         transition-duration: 0.5s;
         height: 200px; }

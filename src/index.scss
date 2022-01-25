@@ -376,18 +376,35 @@ main{
         .data_about_person{
             height: 100%;
             width: 50%;
+            display: flex;
+            flex-direction: column;
+
+            .info_person{
+                height: 100%;
+                width: 100%;
+                display: flex;
+                flex-direction: column;
+                justify-content: right;
+
+                span{
+                    display: block;
+                    color: white;
+                    font-size: 20px;
+                    text-align: right;
+
+                }
+            }
         }
 
     }
 
     .calendar{
-        height: calc(100% - 175px);
+        height: calc(100% - 180px);
         width: 100%;
 
         .table_calendar{
             height: 25px;
             width: 100%;
-            background-color: bisque;
             
             ul{
                 display: flex;
@@ -398,12 +415,15 @@ main{
 
                 li{
                     height: 100%;
-                    width: 14.2%;
+                    width: 12%;
                     text-align: center;
                     box-sizing: border-box;
-                    border-top-left-radius: 10px;
-                    border-top-right-radius: 10px;
-                    background-color: azure;
+                    background-color: transparent;
+                    border-bottom: 3px white solid;
+                    display: flex;
+                    justify-content: center;
+                    align-items: center;
+                    color: white;
 
                     &:last-child{
                         border-right: none;
@@ -427,18 +447,24 @@ main{
             & > *{
                 height: 120px;
                 transition-duration: 0.5s;
-                width: 14.2%;
+                width: 13.3%;
+                margin: 5px;
+                position: relative;
+                border-bottom-left-radius: 10px;
+                border-bottom-right-radius: 10px;
+                box-shadow: 2px 2px 9px black, inset 4px 4px 9px rgb(169, 169, 169);
                 box-sizing: border-box;
-                border-radius: 10px;
-                background-color: beige;
-                border-left: 4px solid transparent;
-                border-top: 4px solid transparent;
-                border-bottom: 4px solid transparent;
-                background-clip: content-box;  
-            }
+                background-color: white;
+            
+                .number_day{
+                    position: absolute;
+                    top: 10px;
+                    left: 10px;
+                    font-size: 40px;
+                    font-weight: bold;
+                    letter-spacing: 3px;
+                }
 
-            & > *:nth-child(7n){
-                border-right: 4px solid transparent;
             }
 
             & > *:hover:not(.blank_item_calendar){
