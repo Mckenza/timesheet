@@ -30,6 +30,22 @@ export default () => {
         }
     )
 
+    function deleteItemFromList(id){
+        let arrayData = JSON.parse(localStorage.getItem('arrayData'));
+        arrayData = arrayData.filter(item => item.id !== id);
+        localStorage.setItem('arrayData', JSON.stringify(arrayData));
+        setList(prev => {
+            return prev.filter(item => {
+                return item.id !== id;
+            })
+        })
+
+    }
+
+    useEffect(() => {
+        console.log(list);
+    },[list])
+
     function changeViewList(manageDiv) {
         divList.current.classList.toggle('view_list');
         divMain.classList.toggle('view_list');
@@ -44,14 +60,9 @@ export default () => {
         <div ref={divList} className="list_employees">
             <ManageList divlistView={changeViewList} />
             <div className="list_empls_wrap">
-                <div className="item_list">
-                    <span className="item_list_name">Буяк Евгений Иванович</span>
-                    <span className="item_list_position">Администратолр сети</span>
-                    <span className="itel_list_date">Дата рождения: 17.12.1996</span>
-                </div>
                 {
                     list.map((item, index) => {
-                        return <ItemList data={item} key={item.id} />
+                        return <ItemList deleteMeth = {deleteItemFromList} data={item} key={item.id} />
                     })
                 }
             </div>

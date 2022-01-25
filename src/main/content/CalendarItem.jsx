@@ -3,7 +3,13 @@ import { useEffect } from "react/cjs/react.development";
 
 export default ({data, saveData}) => {
 
+    console.log(data);
+
     useEffect(() => {
+        
+    })
+
+    function setTime(){
         saveData({
             day: data.numberDay,
             info: {
@@ -12,11 +18,12 @@ export default ({data, saveData}) => {
                 night: 6,
             }
         })
-    })
+    }
 
     return (
         <div className="item_calendar">
-            <span class = "number_day">{data.numberDay}</span>
+            <button className="setup_item_calendar"></button>
+            <span className="number_day">{data.numberDay}</span>
             
         </div>
     )

@@ -73,12 +73,29 @@ export default () => {
     const [year, setYear] = useState(() => new Date().getFullYear());
     const [calendarData, setCalendarData] = useState([]);
     const [dataEmpl, setDataEmpl] = useState({});
+    const [timeForCalendar, setTimeForCalendar] = useState({
+        hoursStart: 'none',
+        minutsStart: 'none',
+        hoursFinish: 'none',
+        minutsFinish: 'none',
+        type: 'none',
+    })
+
+    function setTime(type, time){
+        setTimeForCalendar(prev => {
+            return {
+                ...prev,
+                /* !!!!!!!!!! */
+            }
+
+        })
+    }
+    // type - zamest - Заместительство
+    // type - mainwork - основная работа
+    // type - nightwork - ночное время
 
     useEffect(() => {
-        console.log(month);
-        console.log(year);
         setCalendarData(createCalendar(month, year));
-        console.log(calendarData);
     }, [month, year]);
 
     useEffect(() => {
@@ -89,10 +106,6 @@ export default () => {
             }
         });
     }, [idUser.id])
-
-    useEffect(() => {
-        console.log(dataEmpl);
-    })
 
     return (
         <div className="wrap_calendar">
@@ -119,7 +132,7 @@ export default () => {
                     </div>
                     <div className="buttons_manage_calendar">
                         <div className="value_buttons">
-                            <input onClick={() => {console.log(111)}} type='radio' name="type_day" id="main_work" />
+                            <input value='mainwork' onClick={(e) => {console.log(e.target.value)}} type='radio' name="type_day" id="main_work" />
                             <label for="main_work">Основная деятельность</label>
                             <input type='radio' name="type_day" id="add_work"></input>
                             <label for="add_work">Заместительство</label>

@@ -120,7 +120,8 @@ main {
       display: flex;
       flex-direction: column;
       position: relative;
-      background-color: #777777; }
+      background-color: #777777;
+      position: relative; }
       .list_employees .list_empls_wrap .item_list:hover {
         border-bottom: 3px white solid;
         transition: 0.3s; }
@@ -129,6 +130,16 @@ main {
         height: 100%;
         width: 100%;
         z-index: 100; }
+      .list_employees .list_empls_wrap .item_list .del_item {
+        position: absolute;
+        top: 2px;
+        right: 4px;
+        height: 18px;
+        width: 18px;
+        background-color: transparent;
+        border: none;
+        z-index: 110;
+        font-size: 16px; }
       .list_employees .list_empls_wrap .item_list span {
         width: 90%;
         color: white;
@@ -325,7 +336,15 @@ main {
           left: 10px;
           font-size: 40px;
           font-weight: bold;
-          letter-spacing: 3px; }
+          letter-spacing: 3px;
+          z-index: 90; }
+        .wrap_calendar .calendar .calendar_content > * .setup_item_calendar {
+          position: absolute;
+          height: 100%;
+          width: 100%;
+          background-color: transparent;
+          border: none;
+          z-index: 100; }
       .wrap_calendar .calendar .calendar_content > *:hover:not(.blank_item_calendar) {
         transition-duration: 0.5s;
         height: 200px; }
