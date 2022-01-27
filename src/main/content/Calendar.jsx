@@ -1,14 +1,10 @@
 import CalendarItem from "./CalendarItem"
 
 
-export default ({yearMonth, data, idUserProp}) => {
+export default ({yearMonth, data, idUserProp, dateTime}) => {
 
     const {year, month} = yearMonth;
     const days = [];
-    /*
-        info = {day: 14, 
-            info: {.....}}
-    */
 
     function infoDay(info){
         let localData = JSON.parse(localStorage.getItem(`empl_data_${idUserProp.id}`));
@@ -29,7 +25,7 @@ export default ({yearMonth, data, idUserProp}) => {
                         return <div className="blank_item_calendar" key={index}>
                         </div>
                     } else {
-                        return <CalendarItem saveData = {infoDay} data = {value} key={index}/>
+                        return <CalendarItem saveData = {infoDay} dateTime = {dateTime} data = {value} key={index}/>
                     }
                 })
             }

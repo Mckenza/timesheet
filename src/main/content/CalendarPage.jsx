@@ -73,24 +73,34 @@ export default () => {
     const [year, setYear] = useState(() => new Date().getFullYear());
     const [calendarData, setCalendarData] = useState([]);
     const [dataEmpl, setDataEmpl] = useState({});
-    const [timeForCalendar, setTimeForCalendar] = useState({
+    const [typeWork, setTypeWork] = useState('none');
+    const [timeWork, setTimeWork] = useState({
         hoursStart: 'none',
         minutsStart: 'none',
         hoursFinish: 'none',
         minutsFinish: 'none',
-        type: 'none',
-    })
+    },)
 
-    function setTime(type, time){
-        setTimeForCalendar(prev => {
+    function setType(type){
+        setTypeWork(type);
+    }
+
+
+    function setTime(value, time){
+        setTimeWork(prev => {
             return {
                 ...prev,
-                /* !!!!!!!!!! */
+                [value]: time, 
             }
 
         })
     }
-    // type - zamest - Заместительство
+
+    useEffect(() => {
+        console.log(typeWork, timeWork);
+    }, [typeWork, timeWork])
+
+    // type - addwork - Заместительство
     // type - mainwork - основная работа
     // type - nightwork - ночное время
 
@@ -132,11 +142,11 @@ export default () => {
                     </div>
                     <div className="buttons_manage_calendar">
                         <div className="value_buttons">
-                            <input value='mainwork' onClick={(e) => {console.log(e.target.value)}} type='radio' name="type_day" id="main_work" />
+                            <input onClick={() => {setType('mainwork')}} type='radio' name="type_day" id="main_work" />
                             <label for="main_work">Основная деятельность</label>
-                            <input type='radio' name="type_day" id="add_work"></input>
+                            <input onClick={() => {setType('addwork')}} type='radio' name="type_day" id="add_work"></input>
                             <label for="add_work">Заместительство</label>
-                            <input type='radio' name="type_day" id="night_work"></input>
+                            <input onClick={() => {setType('nightwork')}} type='radio' name="type_day" id="night_work"></input>
                             <label for="night_work">Ночное время</label>
                         </div>
 
@@ -144,15 +154,15 @@ export default () => {
                             <span>Время работы</span>
                             <div className="block_1_time_work">
                                 <label for="time_start_start">С</label>
-                                <input type="number" id="time_start_start"></input>
+                                <input onChange={(e) => {setTime('hoursStart', e.target.value)}} type="number" id="time_start_start"></input>
                                 <label for="time_start_end">:</label>
-                                <input type="number" id="time_start_end"></input>
+                                <input onChange={(e) => {setTime('minutsStart', e.target.value)}} type="number" id="time_start_end"></input>
                             </div>
                             <div className="block_2_time_work">
                                 <label for="time_end_start">До</label>
-                                <input type="number" id="time_end_start"></input>
+                                <input onChange={(e) => {setTime('hoursFinish', e.target.value)}} type="number" id="time_end_start"></input>
                                 <label for="time_end_end">:</label>
-                                <input type="number" id="time_end_end"></input>
+                                <input onChange={(e) => {setTime('minutsFinish', e.target.value)}} type="number" id="time_end_end"></input>
                             </div>
 
                             <div className="button_save">
@@ -182,7 +192,7 @@ export default () => {
                         <li>Воскресенье</li>
                     </ul>
                 </div>
-                <Calendar yearMonth={{ year, month }} data={calendarData} idUserProp={idUser} />
+                <Calendar yearMonth={{ year, month }} dateTime = {{typeWork, timeWork}} data={calendarData} idUserProp={idUser} />
             </div>
         </div>
     )
