@@ -4,7 +4,9 @@ import Calendar from "./Calendar";
 
 /* Сделать список по месяцам и года */
 
-function createCalendar(month, year) {
+function createCalendar(month, year, id) {
+    //const monthData = JSON.parse(localStorage.getItem(`empl_data_${id}`));
+
     const daysInMonth = new Date(year, month + 1, 0).getDate();
     const calendar = [];
 
@@ -49,6 +51,18 @@ function createCalendar(month, year) {
         calendar.push({ type: 'blank' });
     }
 
+    /*
+    calendar.forEach(item => {
+        if (item.type === 'normal') {
+            item.dayTimes = {
+                [`${year}-${month}`]: {}
+            }
+            
+            
+            monthData[`${year}-${month}`][`day_${item.numberDay}`];
+        }
+    })
+    */
     return calendar;
 }
 
@@ -65,6 +79,8 @@ function dataFromStorage(id) {
 export default () => {
 
     const idUser = useParams();
+
+    // Пустой объект для записей данных (год каждый месяц и каждый день)
     if (!localStorage.getItem(`empl_data_${idUser.id}`)) {
         localStorage.setItem(`empl_data_${idUser.id}`, JSON.stringify({}));
     }
@@ -79,22 +95,30 @@ export default () => {
         minutsStart: 'none',
         hoursFinish: 'none',
         minutsFinish: 'none',
-    },)
+    })
 
-    function setType(type){
+    function setType(type) {
         setTypeWork(type);
     }
 
 
-    function setTime(value, time){
+    function setTime(value, time) {
         setTimeWork(prev => {
             return {
                 ...prev,
-                [value]: time, 
+                [value]: time,
             }
 
         })
     }
+
+    ////////***/*/*/*/*/*/*/*/*/*/**/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */ */
+    /*function changeMonth(e) {
+        const checkData = JSON.parse(localStorage.getItem(`empl_data_${idUser.id}`));
+        localStorage.setItem(`empl_data_${idUser.id}`, JSON.stringify(checkData[`${year}-${month}`] = {}));
+        setMonth(Number(e.target.value));
+    }
+    */
 
     useEffect(() => {
         console.log(typeWork, timeWork);
@@ -105,7 +129,7 @@ export default () => {
     // type - nightwork - ночное время
 
     useEffect(() => {
-        setCalendarData(createCalendar(month, year));
+        setCalendarData(createCalendar(month, year, idUser.id));
     }, [month, year]);
 
     useEffect(() => {
@@ -138,15 +162,15 @@ export default () => {
                             <option value="11">Декабрь</option>
                         </select>
                         <span>Год:</span>
-                        <input type="number" onChange={(e) => { setYear(Number(e.target.value)) }} value = {year}></input>
+                        <input type="number" onChange={(e) => { setYear(Number(e.target.value)) }} value={year}></input>
                     </div>
                     <div className="buttons_manage_calendar">
                         <div className="value_buttons">
-                            <input onClick={() => {setType('mainwork')}} type='radio' name="type_day" id="main_work" />
+                            <input onClick={() => { setType('mainwork') }} type='radio' name="type_day" id="main_work" />
                             <label for="main_work">Основная деятельность</label>
-                            <input onClick={() => {setType('addwork')}} type='radio' name="type_day" id="add_work"></input>
+                            <input onClick={() => { setType('addwork') }} type='radio' name="type_day" id="add_work"></input>
                             <label for="add_work">Заместительство</label>
-                            <input onClick={() => {setType('nightwork')}} type='radio' name="type_day" id="night_work"></input>
+                            <input onClick={() => { setType('nightwork') }} type='radio' name="type_day" id="night_work"></input>
                             <label for="night_work">Ночное время</label>
                         </div>
 
@@ -154,15 +178,15 @@ export default () => {
                             <span>Время работы</span>
                             <div className="block_1_time_work">
                                 <label for="time_start_start">С</label>
-                                <input onChange={(e) => {setTime('hoursStart', e.target.value)}} type="number" id="time_start_start"></input>
+                                <input onChange={(e) => { setTime('hoursStart', e.target.value) }} type="number" id="time_start_start"></input>
                                 <label for="time_start_end">:</label>
-                                <input onChange={(e) => {setTime('minutsStart', e.target.value)}} type="number" id="time_start_end"></input>
+                                <input onChange={(e) => { setTime('minutsStart', e.target.value) }} type="number" id="time_start_end"></input>
                             </div>
                             <div className="block_2_time_work">
                                 <label for="time_end_start">До</label>
-                                <input onChange={(e) => {setTime('hoursFinish', e.target.value)}} type="number" id="time_end_start"></input>
+                                <input onChange={(e) => { setTime('hoursFinish', e.target.value) }} type="number" id="time_end_start"></input>
                                 <label for="time_end_end">:</label>
-                                <input onChange={(e) => {setTime('minutsFinish', e.target.value)}} type="number" id="time_end_end"></input>
+                                <input onChange={(e) => { setTime('minutsFinish', e.target.value) }} type="number" id="time_end_end"></input>
                             </div>
 
                             <div className="button_save">
@@ -192,7 +216,7 @@ export default () => {
                         <li>Воскресенье</li>
                     </ul>
                 </div>
-                <Calendar yearMonth={{ year, month }} dateTime = {{typeWork, timeWork}} data={calendarData} idUserProp={idUser} />
+                <Calendar yearMonth={{ year, month }} dateTime={{ typeWork, timeWork }} data={calendarData} idUserProp={idUser} />
             </div>
         </div>
     )

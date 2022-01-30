@@ -1,10 +1,6 @@
 import react, { useContext, useEffect, useState } from "react";
 import { AppContext } from "../../App";
 
-function saveInLocalStorage(data){
-
-}
-
 export default () => {
     const appContext = useContext(AppContext);
 

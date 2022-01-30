@@ -42,10 +42,12 @@ export default () => {
 
     }
 
+    /*
     useEffect(() => {
         console.log(list);
     },[list])
-
+    */
+   
     function changeViewList(manageDiv) {
         divList.current.classList.toggle('view_list');
         divMain.classList.toggle('view_list');
