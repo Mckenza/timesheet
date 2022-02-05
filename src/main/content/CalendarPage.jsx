@@ -1,6 +1,7 @@
 import react, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import Calendar from "./Calendar";
+import ManageCalendar from "./ManageCalendar";
 
 /* Сделать список по месяцам и года */
 
@@ -66,72 +67,74 @@ function createCalendar(month, year, id) {
     return calendar;
 }
 
-function dataFromStorage(id) {
-    const allInfo = JSON.parse(localStorage.getItem('arrayData'));
-
-    for (let buf of allInfo) {
-        if (Number(buf.id) === Number(id)) {
-            return buf;
-        }
+function checkDate(year, month, id){
+    const objLocal = JSON.parse(localStorage.getItem(`empl_data_${id}`));
+    if(!(`empl_data_${id}` in objLocal)){
+        objLocal[`${year}-${month}`] = {};
+        localStorage.setItem(`empl_data_${id}`, JSON.stringify(objLocal));
     }
+
+    return objLocal;
 }
 
-export default () => {
 
+export default () => {
+    
     const idUser = useParams();
 
-    // Пустой объект для записей данных (год каждый месяц и каждый день)
-    if (!localStorage.getItem(`empl_data_${idUser.id}`)) {
-        localStorage.setItem(`empl_data_${idUser.id}`, JSON.stringify({}));
-    }
-
-    const [month, setMonth] = useState(() => new Date().getMonth());
-    const [year, setYear] = useState(() => new Date().getFullYear());
-    const [calendarData, setCalendarData] = useState([]);
-    const [dataEmpl, setDataEmpl] = useState({});
-    const [typeWork, setTypeWork] = useState('none');
-    const [timeWork, setTimeWork] = useState({
+    const [month, setMonth] = useState(() => new Date().getMonth());        // текущий месяц
+    const [year, setYear] = useState(() => new Date().getFullYear());       // текущий год
+    const [calendarData, setCalendarData] = useState(createCalendar(month, year));                   // для постраения правильного календаря
+    const [dataEmpl, setDataEmpl] = useState(() => checkDate(year, month, idUser.id));                       
+    const [typeWork, setTypeWork] = useState('none');                       // стейт для типа работы
+    const [timeWork, setTimeWork] = useState({                              // стейт для времени начала и конца
         hoursStart: 'none',
         minutsStart: 'none',
         hoursFinish: 'none',
         minutsFinish: 'none',
-    })
+    });
+    
+    // смена ссылки - смена даты и года
+    useEffect(() => {
+        setMonth(() => new Date().getMonth());
+        setYear(() => new Date().getFullYear());
+    }, [idUser.id]);
 
+    // построение календаря с пробелами
+    useEffect(() => {
+        setCalendarData(createCalendar(month, year));
+        setDataEmpl(checkDate(year, month, idUser.id));
+    }, [month, year]);
+
+    // выбор типа работы
     function setType(type) {
         setTypeWork(type);
     }
 
-
+    // сохранение времени
     function setTime(value, time) {
         setTimeWork(prev => {
             return {
                 ...prev,
                 [value]: time,
             }
-
         })
     }
 
-    ////////***/*/*/*/*/*/*/*/*/*/**/*!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! */ */
-    /*function changeMonth(e) {
-        const checkData = JSON.parse(localStorage.getItem(`empl_data_${idUser.id}`));
-        localStorage.setItem(`empl_data_${idUser.id}`, JSON.stringify(checkData[`${year}-${month}`] = {}));
-        setMonth(Number(e.target.value));
-    }
-    */
-
+    
     useEffect(() => {
         console.log(typeWork, timeWork);
     }, [typeWork, timeWork])
 
+    
     // type - addwork - Заместительство
     // type - mainwork - основная работа
     // type - nightwork - ночное время
 
-    useEffect(() => {
-        setCalendarData(createCalendar(month, year, idUser.id));
-    }, [month, year]);
-
+    
+    
+    
+    /*
     useEffect(() => {
         setDataEmpl(prev => {
             return {
@@ -141,69 +144,10 @@ export default () => {
         });
     }, [idUser.id])
 
+    */
     return (
         <div className="wrap_calendar">
-            <div className="manage_calendar_wrap">
-                <div className="manage_calendar">
-                    <div className="change_date_for_calendar">
-                        <span>Месяц:</span>
-                        <select value={month} onChange={(e) => { setMonth(Number(e.target.value)) }}>
-                            <option value="0">Январь</option>
-                            <option value="1">Февраль</option>
-                            <option value="2">Март</option>
-                            <option value="3">Апрель</option>
-                            <option value="4">Май</option>
-                            <option value="5">Июнь</option>
-                            <option value="6">Июль</option>
-                            <option value="7">Август</option>
-                            <option value="8">Сентябрь</option>
-                            <option value="9">Октябрь</option>
-                            <option value="10">Ноябрь</option>
-                            <option value="11">Декабрь</option>
-                        </select>
-                        <span>Год:</span>
-                        <input type="number" onChange={(e) => { setYear(Number(e.target.value)) }} value={year}></input>
-                    </div>
-                    <div className="buttons_manage_calendar">
-                        <div className="value_buttons">
-                            <input onClick={() => { setType('mainwork') }} type='radio' name="type_day" id="main_work" />
-                            <label for="main_work">Основная деятельность</label>
-                            <input onClick={() => { setType('addwork') }} type='radio' name="type_day" id="add_work"></input>
-                            <label for="add_work">Заместительство</label>
-                            <input onClick={() => { setType('nightwork') }} type='radio' name="type_day" id="night_work"></input>
-                            <label for="night_work">Ночное время</label>
-                        </div>
-
-                        <div className="value_time_work">
-                            <span>Время работы</span>
-                            <div className="block_1_time_work">
-                                <label for="time_start_start">С</label>
-                                <input onChange={(e) => { setTime('hoursStart', e.target.value) }} type="number" id="time_start_start"></input>
-                                <label for="time_start_end">:</label>
-                                <input onChange={(e) => { setTime('minutsStart', e.target.value) }} type="number" id="time_start_end"></input>
-                            </div>
-                            <div className="block_2_time_work">
-                                <label for="time_end_start">До</label>
-                                <input onChange={(e) => { setTime('hoursFinish', e.target.value) }} type="number" id="time_end_start"></input>
-                                <label for="time_end_end">:</label>
-                                <input onChange={(e) => { setTime('minutsFinish', e.target.value) }} type="number" id="time_end_end"></input>
-                            </div>
-
-                            <div className="button_save">
-                                <button className="start_edit_calendar view_button_">Редактировать</button>
-                                <button className="apply_changes_calendar view_button_">Применить</button>
-                                <button className="save_changes_calendar view_button_">Сохранить</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className="data_about_person">
-                    <div className="info_person">
-                        <span className="fio_info_person">{dataEmpl.fio}</span>
-                        <span className="position_info_person">{dataEmpl.position}</span>
-                    </div>
-                </div>
-            </div>
+            <ManageCalendar setMonth = {setMonth} setYear = {setYear} setType = {setType} setTime = {setTime} personInfo = {{year, month, id: idUser.id}}/>
             <div className="calendar">
                 <div className="table_calendar">
                     <ul>
@@ -216,8 +160,9 @@ export default () => {
                         <li>Воскресенье</li>
                     </ul>
                 </div>
-                <Calendar yearMonth={{ year, month }} dateTime={{ typeWork, timeWork }} data={calendarData} idUserProp={idUser} />
+                <Calendar dataEpmlLocal = {dataEmpl[`${year}-${month}`]} dateTime={{ typeWork, timeWork }} data={calendarData}/>
             </div>
         </div>
+        
     )
 }

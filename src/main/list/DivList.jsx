@@ -31,6 +31,7 @@ export default () => {
     )
 
     function deleteItemFromList(id){
+        localStorage.removeItem(`empl_data_${id}`);
         let arrayData = JSON.parse(localStorage.getItem('arrayData'));
         arrayData = arrayData.filter(item => item.id !== id);
         localStorage.setItem('arrayData', JSON.stringify(arrayData));
@@ -41,12 +42,6 @@ export default () => {
         })
 
     }
-
-    /*
-    useEffect(() => {
-        console.log(list);
-    },[list])
-    */
    
     function changeViewList(manageDiv) {
         divList.current.classList.toggle('view_list');

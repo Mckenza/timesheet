@@ -7,7 +7,6 @@ export default () => {
 
     return (
         <div className="main_content">
-            
             <Routes>
                 <Route path='/input' element={<FieldForData />} />
                 <Route path='/calendar/:id' element = {<CalendarPage/>}/>

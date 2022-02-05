@@ -1,26 +1,41 @@
-import { useState } from "react";
-import { useEffect } from "react/cjs/react.development";
+import { useRef, useState } from "react";
 import CalendarItem from "./CalendarItem"
 
 
-export default ({yearMonth, data, idUserProp, dateTime}) => {
-    /**
-     * yearMoth - год и месяц
+export default ({dataEpmlLocal, data, dateTime}) => {
+    /*
+     * dataEpmlLocal - объект с данными текущей даты
      * data - данные для построения правильного месяца (пустые и не пустые ячейки)
-     * idUserProp - id из списка
      * dateTime - настройки для календаря
     */
 
-    let trigger = false;
+    // все накапливается тут и по кнопке сохранить - сохранит в локале в родительском компоненте
+    const daysInfo = useRef({...dataEpmlLocal});
 
-    const [fromLocalTable, setMonthInfo] = useState(JSON.parse(localStorage.getItem(`empl_data_${idUserProp.id}`)));
-    console.log(fromLocalTable)
+    function saveInfoDay(data){
+        daysInfo.current = {
+            ...daysInfo.current,
+            [`day_${data.numberDay}`]: {
+                ...daysInfo.current[`day_${data.numberDay}`],
+                ...data.hours,
+            }
+        }
+        console.log(daysInfo.current)
+    }
 
-    const {year, month} = yearMonth;
-    console.log(yearMonth)
+
+
+
+
+    //let trigger = false;
+
+    //const [fromLocalTable, setMonthInfo] = useState(JSON.parse(localStorage.getItem(`empl_data_${idUserProp.id}`)));
+
+    //const {year, month} = yearMonth;
 
     /* Если нет ни каких данных о работнике, создать пустой объект этого месяца */
     //const fromLocalTable = JSON.parse(localStorage.getItem(`empl_data_${idUserProp.id}`));
+    /*
     if(!([`${yearMonth.year}-${yearMonth.month}`] in fromLocalTable)){
         setMonthInfo(prev => {
             return {
@@ -39,7 +54,7 @@ export default ({yearMonth, data, idUserProp, dateTime}) => {
     }
 
     /* метод добавления/изменения дня (при редактировании) */
-    function infoDay(info, numberDay){
+    /*function infoDay(info, numberDay){
         //let localData = JSON.parse(localStorage.getItem(`empl_data_${idUserProp.id}`));
 
         //localData[`${year}-${month}`][`day_${numberDay}`] = info;
@@ -55,11 +70,13 @@ export default ({yearMonth, data, idUserProp, dateTime}) => {
         })
 
         //localStorage.setItem(`empl_data_${idUserProp.id}`, JSON.stringify(localData));
-    }
-
+    }*/
+/*
     useEffect(() => {
         localStorage.setItem(`empl_data_${idUserProp.id}`, JSON.stringify(fromLocalTable));
     }, [fromLocalTable])
+
+    */
 
     return (
         <div className="calendar_content">
@@ -69,7 +86,7 @@ export default ({yearMonth, data, idUserProp, dateTime}) => {
                         return <div className="blank_item_calendar" key={index}>
                         </div>
                     } else {
-                        return <CalendarItem saveData = {infoDay} dateTime = {dateTime} monthData = {fromLocalTable[`${year}-${month}`][`day_${value.numberDay}`]} data = {value} key={index}/>
+                        return <CalendarItem saveData = {saveInfoDay} data = {value} dateTime = {dateTime} key={index}/>
                     }
                 })
             }

@@ -9,7 +9,11 @@ export const AppContext = createContext();
 function App() {
   const refListUpdate = useRef(null);
 
+  // создание элемента списка, создаем (если нет) в локале объект
   function createItemList(data) {
+    if(!JSON.parse(localStorage.getItem(`empl_data_${data.id}`))){
+      localStorage.setItem(`empl_data_${data.id}`, JSON.stringify({}));
+    }
     refListUpdate.current(data);
   }
 
