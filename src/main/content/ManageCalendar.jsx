@@ -49,25 +49,25 @@ export default ({ setMonth, setYear, setType, setTime, personInfo }) => {
                 <div className="buttons_manage_calendar">
                     <div className="value_buttons">
                         <input onClick={() => { setType('mainwork') }} type='radio' name="type_day" id="main_work" />
-                        <label for="main_work">Основная деятельность</label>
+                        <label htmlFor="main_work">Основная деятельность</label>
                         <input onClick={() => { setType('addwork') }} type='radio' name="type_day" id="add_work"></input>
-                        <label for="add_work">Заместительство</label>
+                        <label htmlFor="add_work">Заместительство</label>
                         <input onClick={() => { setType('nightwork') }} type='radio' name="type_day" id="night_work"></input>
-                        <label for="night_work">Ночное время</label>
+                        <label htmlFor="night_work">Ночное время</label>
                     </div>
 
                     <div className="value_time_work">
                         <span>Время работы</span>
                         <div className="block_1_time_work">
-                            <label for="time_start_start">С</label>
+                            <label htmlFor="time_start_start">С</label>
                             <input onChange={(e) => { setTime('hoursStart', e.target.value) }} type="number" id="time_start_start"></input>
-                            <label for="time_start_end">:</label>
+                            <label htmlFor="time_start_end">:</label>
                             <input onChange={(e) => { setTime('minutsStart', e.target.value) }} type="number" id="time_start_end"></input>
                         </div>
                         <div className="block_2_time_work">
-                            <label for="time_end_start">До</label>
+                            <label htmlFor="time_end_start">До</label>
                             <input onChange={(e) => { setTime('hoursFinish', e.target.value) }} type="number" id="time_end_start"></input>
-                            <label for="time_end_end">:</label>
+                            <label htmlFor="time_end_end">:</label>
                             <input onChange={(e) => { setTime('minutsFinish', e.target.value) }} type="number" id="time_end_end"></input>
                         </div>
 

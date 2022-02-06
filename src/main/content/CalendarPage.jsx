@@ -52,24 +52,12 @@ function createCalendar(month, year, id) {
         calendar.push({ type: 'blank' });
     }
 
-    /*
-    calendar.forEach(item => {
-        if (item.type === 'normal') {
-            item.dayTimes = {
-                [`${year}-${month}`]: {}
-            }
-            
-            
-            monthData[`${year}-${month}`][`day_${item.numberDay}`];
-        }
-    })
-    */
     return calendar;
 }
 
 function checkDate(year, month, id){
     const objLocal = JSON.parse(localStorage.getItem(`empl_data_${id}`));
-    if(!(`empl_data_${id}` in objLocal)){
+    if(!(`${year}-${month}` in objLocal)){
         objLocal[`${year}-${month}`] = {};
         localStorage.setItem(`empl_data_${id}`, JSON.stringify(objLocal));
     }
@@ -82,8 +70,8 @@ export default () => {
     
     const idUser = useParams();
 
-    const [month, setMonth] = useState(() => new Date().getMonth());        // текущий месяц
-    const [year, setYear] = useState(() => new Date().getFullYear());       // текущий год
+    const [month, setMonth] = useState(new Date().getMonth());        // текущий месяц
+    const [year, setYear] = useState(new Date().getFullYear());       // текущий год
     const [calendarData, setCalendarData] = useState(createCalendar(month, year));                   // для постраения правильного календаря
     const [dataEmpl, setDataEmpl] = useState(() => checkDate(year, month, idUser.id));                       
     const [typeWork, setTypeWork] = useState('none');                       // стейт для типа работы
@@ -96,12 +84,14 @@ export default () => {
     
     // смена ссылки - смена даты и года
     useEffect(() => {
-        setMonth(() => new Date().getMonth());
-        setYear(() => new Date().getFullYear());
+        setMonth(new Date().getMonth());
+        setYear(new Date().getFullYear());
+        setDataEmpl(() => checkDate(year, month, idUser.id));
     }, [idUser.id]);
 
     // построение календаря с пробелами
     useEffect(() => {
+        checkDate(year, month, idUser.id);
         setCalendarData(createCalendar(month, year));
         setDataEmpl(checkDate(year, month, idUser.id));
     }, [month, year]);
@@ -126,25 +116,23 @@ export default () => {
         console.log(typeWork, timeWork);
     }, [typeWork, timeWork])
 
+    // Сохранить время 
+    function saveHoursLocal(data, numberDay){
+        const objLocal = JSON.parse(localStorage.getItem(`empl_data_${idUser.id}`));
+        objLocal[`${year}-${month}`][`day_${numberDay}`] = {
+            ...objLocal[`${year}-${month}`][`day_${numberDay}`],
+            ...data,
+        }
+      
+        localStorage.setItem(`empl_data_${idUser.id}`, JSON.stringify(objLocal))     
+    }
+
     
     // type - addwork - Заместительство
     // type - mainwork - основная работа
     // type - nightwork - ночное время
 
-    
-    
-    
-    /*
-    useEffect(() => {
-        setDataEmpl(prev => {
-            return {
-                ...prev,
-                ...dataFromStorage(idUser.id),
-            }
-        });
-    }, [idUser.id])
 
-    */
     return (
         <div className="wrap_calendar">
             <ManageCalendar setMonth = {setMonth} setYear = {setYear} setType = {setType} setTime = {setTime} personInfo = {{year, month, id: idUser.id}}/>
@@ -160,7 +148,8 @@ export default () => {
                         <li>Воскресенье</li>
                     </ul>
                 </div>
-                <Calendar dataEpmlLocal = {dataEmpl[`${year}-${month}`]} dateTime={{ typeWork, timeWork }} data={calendarData}/>
+                {dataEmpl[`${year}-${month}`] ? <Calendar dataEpmlLocal = {dataEmpl[`${year}-${month}`]} dateTime={{ typeWork, timeWork }} save = {saveHoursLocal} data={calendarData}/> : <></> }
+                
             </div>
         </div>
         

@@ -1,8 +1,31 @@
 import react, { useState, useEffect } from "react";
 
+function update(obj){
+    if(obj === 'blank'){
+        return {
+            add: 0,
+            night: 0,
+            normal: 0,
+        }
+    } else {
+        return {
+            add: 0,
+            night: 0,
+            normal: 0,
+            ...obj,
+        }
+    }
+}
 
+export default ({infoDay, data, saveData, dateTime }) => {
 
-export default ({ data, saveData, dateTime }) => {
+    console.log(infoDay);
+
+    const [hours, setHours] = useState(update(infoDay));
+
+    useEffect(() => {
+        setHours(update(infoDay));
+    }, [infoDay])
 
     function setTime() {
         const { hoursStart, minutsStart, hoursFinish, minutsFinish } = dateTime.timeWork;
@@ -23,12 +46,11 @@ export default ({ data, saveData, dateTime }) => {
                         add: `${hours}:${minut}`,
                     }
                 });
-                /*
-                setTimes(prev => ({
+
+                setHours(prev => ({
                     ...prev,
                     add: `${hours}:${minut}`,
                 }));
-                */
                 break;
             case 'mainwork':
                 saveData({
@@ -37,12 +59,11 @@ export default ({ data, saveData, dateTime }) => {
                         normal: `${hours}:${minut}`,
                     }
                 });
-                /*
-                setTimes(prev => ({
+
+                setHours(prev => ({
                     ...prev,
                     normal: `${hours}:${minut}`,
                 }));
-                */
                 break;
             case 'nightwork':
                 saveData({
@@ -52,69 +73,21 @@ export default ({ data, saveData, dateTime }) => {
                     }
                 });
 
-                /*
-                setTimes(prev => ({
+                setHours(prev => ({
                     ...prev,
                     night: `${hours}:${minut}`,
                 }));
-                */
                 break;
         }
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
-    /*
-    function checkBlank(obj) {
-        if (!obj) {
-            return {
-                add: 0,
-                night: 0,
-                normal: 0,
-            }
-    
-        } else {
-            return {
-                ...obj,
-            }
-        }
-    }
-
-    const [times, setTimes] = useState(() => checkBlank(monthData))
-
-    // временно считаем время тут - поместить эту функция потом в компонент выше
-
-    function setTime() {
-        const { hoursStart, minutsStart, hoursFinish, minutsFinish } = dateTime.timeWork;
-        let hours = hoursFinish - hoursStart;
-        let minut;
-        if (minutsFinish < minutsStart) {
-            hours--;
-            minut = 60 - Number(minutsStart) + Number(minutsFinish);
-        } else {
-            minut = minutsFinish - minutsStart;
-        }
-
-        
-
-    */
     return (
         <div className="item_calendar">
             <button className="setup_item_calendar" onClick={() => { setTime() }}></button>
             <span className="number_day">{data.numberDay}</span>
-            <span>Нормал {} </span>
-            <span>Зам {} </span>
-            <span>Ночь {} </span>
+            <span>Нормал {hours.normal} </span>
+            <span>Зам {hours.add} </span>
+            <span>Ночь {hours.night} </span>
 
         </div>
     )

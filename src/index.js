@@ -11,10 +11,6 @@ import './index.css';
     if(!localStorage.getItem('arrayData')){
         localStorage.setItem('arrayData', JSON.stringify([]));
     }
-
-    if(!localStorage.getItem('empl_data')){
-        localStorage.setItem('empl_data', JSON.stringify([]));
-    }
 })();
 
 
