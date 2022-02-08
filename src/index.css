@@ -24,8 +24,7 @@ header {
   width: 100%;
   height: 5vh;
   border-bottom: 3px white solid;
-  box-sizing: border-box;
-  margin-bottom: 5px; }
+  box-sizing: border-box; }
 
 main {
   height: 88vh;
@@ -48,21 +47,35 @@ main {
         height: 300px;
         width: 300px;
         padding: 20px;
+        border: 2px solid white;
         margin: 0 auto;
         display: flex;
         flex-direction: column;
         justify-content: space-around; }
         main .main_content .input_data_about_person .input_data_wrap input {
-          height: 20px;
+          height: 30px;
           width: 90%;
-          margin: 0 auto; }
+          margin: 0 auto;
+          background-color: transparent;
+          color: white;
+          border: none;
+          border-bottom: 2px white solid;
+          font-size: 16px; }
+          main .main_content .input_data_about_person .input_data_wrap input :-moz-placeholder {
+            color: white; }
         main .main_content .input_data_about_person .input_data_wrap button {
           width: 40%;
           height: 30px;
           margin: 0 auto;
-          border: none; }
+          border: 2px solid white;
+          background-color: transparent;
+          color: white;
+          font-size: 16px; }
         main .main_content .input_data_about_person .input_data_wrap h3 {
-          margin: 0 auto; }
+          margin: 0 auto;
+          color: white;
+          font-size: 20px;
+          text-align: center; }
   main .list_employees {
     height: 100%;
     width: 20%; }
@@ -71,18 +84,31 @@ main {
   transition-duration: 1s;
   border-right: 2px white solid; }
   .list_employees.view_list {
-    width: 5%;
+    width: 7%;
     transition-duration: 1s; }
     .list_employees.view_list .manage_buttons_list {
-      height: 35px;
-      width: 100%; }
+      height: 40px;
+      width: 100%;
+      display: flex;
+      justify-content: space-between; }
       .list_employees.view_list .manage_buttons_list button {
         border: none;
         font-size: 25px;
         padding: 0 10px;
-        margin: 0 auto; }
+        margin-left: 10px; }
       .list_employees.view_list .manage_buttons_list a {
-        display: none; }
+        padding: 0;
+        width: 20px;
+        height: 100%;
+        border: none;
+        margin: auto 5px;
+        margin-left: 20px;
+        background-image: url("../img/add_white.png");
+        background-position: center;
+        background-size: contain;
+        background-repeat: no-repeat;
+        transition-duration: 0.5s;
+        transition-property: width; }
   .list_employees .manage_buttons_list {
     height: 40px;
     width: 100%;
@@ -105,7 +131,8 @@ main {
       border: 2px white solid;
       color: white;
       margin: auto 10px;
-      display: flex; }
+      display: flex;
+      transition-duration: 0.5s; }
   .list_employees .list_empls_wrap {
     height: calc(100% - 47px);
     width: 100%;
@@ -350,8 +377,9 @@ main {
         height: 200px; }
 
 footer {
-  height: 6vh;
+  height: 4vh;
   width: 100%;
-  background-color: brown; }
+  border-top: 4px solid white;
+  margin-top: 8px; }
 
 /*# sourceMappingURL=index.css.map */

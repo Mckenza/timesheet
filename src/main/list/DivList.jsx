@@ -48,8 +48,10 @@ export default () => {
         divMain.classList.toggle('view_list');
         if (divList.current.classList.contains('view_list')) {
             manageDiv.lastElementChild.innerHTML = '&rArr;';
+            manageDiv.querySelector('[href="/input"]').innerHTML = '';
         } else {
             manageDiv.lastElementChild.innerHTML = '&lArr;';
+            manageDiv.querySelector('[href="/input"]').innerHTML = 'Добавить';
         }
     }
 

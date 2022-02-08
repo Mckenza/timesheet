@@ -31,7 +31,7 @@ header{
     height: 5vh;
     border-bottom: 3px white solid;
     box-sizing: border-box;
-    margin-bottom: 5px;
+
 }
 
 main{
@@ -60,26 +60,41 @@ main{
                 height: 300px;
                 width: 300px;
                 padding: 20px;
+                border: 2px solid white;
                 margin: 0 auto;
                 display: flex;
                 flex-direction: column;
                 justify-content: space-around;
 
                 & input{
-                    height: 20px;
+                    height: 30px;
                     width: 90%;
                     margin: 0 auto;
+                    background-color: transparent;
+                    color: white;
+                    border: none;
+                    border-bottom: 2px white solid;
+                    font-size: 16px;
+                     & :-moz-placeholder{
+                         color: white;
+                     }
                 }
 
                 button{
                     width: 40%;
                     height: 30px;
                     margin: 0 auto;
-                    border: none;
+                    border: 2px solid white;
+                    background-color: transparent;
+                    color: white;
+                    font-size: 16px;
                 }
 
                 h3{
                     margin: 0 auto;
+                    color: white;
+                    font-size: 20px;
+                    text-align: center;
                 }
             } 
         }
@@ -97,22 +112,35 @@ main{
     border-right: 2px white solid;
 
     &.view_list{
-        width: 5%;
+        width: 7%;
         transition-duration: 1s;
 
         .manage_buttons_list{
-            height: 35px;
+            height: 40px;
             width: 100%;
+            display: flex;
+            justify-content: space-between;
     
             button{
                 border: none;
                 font-size: 25px;
                 padding: 0 10px;
-                margin: 0 auto;
+                margin-left: 10px;
             }
 
             a{
-                display: none;
+                padding: 0;
+                width: 20px;
+                height: 100%;
+                border: none;
+                margin: auto 5px;
+                margin-left: 20px;
+                background-image: url('../img/add_white.png');
+                background-position: center;
+                background-size: contain;
+                background-repeat: no-repeat;
+                transition-duration: 0.5s;
+                transition-property: width;
             }
         }
     }
@@ -143,6 +171,7 @@ main{
             color: white;
             margin: auto 10px;
             display: flex;
+            transition-duration: 0.5s;
 
         }
     }
@@ -502,16 +531,9 @@ main{
 
 
 
-
-
-
-
-
-
-
-
 footer{
-    height: 6vh;
+    height: 4vh;
     width: 100%;
-    background-color: brown;
+    border-top: 4px solid white;
+    margin-top: 8px;
 }
