@@ -25,7 +25,6 @@ export default () => {
             ...info,
             id: Number(JSON.parse(localStorage.getItem('current_Id'))),
         }
-        console.log(copyState.id)
         const dataFromStorage = JSON.parse(localStorage.getItem('arrayData'));
         dataFromStorage.push(copyState);
         localStorage.setItem('arrayData', JSON.stringify(dataFromStorage));

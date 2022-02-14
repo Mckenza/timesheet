@@ -356,7 +356,16 @@ main {
         border-bottom-right-radius: 10px;
         box-shadow: 2px 2px 9px black, inset 4px 4px 9px darkgray;
         box-sizing: border-box;
-        background-color: white; }
+        background-color: white;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-top: 50px;
+        font-size: 15px; }
+        .wrap_calendar .calendar .calendar_content > * span:not(span[class]) {
+          width: 100%;
+          text-align: center;
+          height: 100px; }
         .wrap_calendar .calendar .calendar_content > * .number_day {
           position: absolute;
           top: 10px;

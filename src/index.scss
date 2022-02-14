@@ -190,13 +190,12 @@ main{
         .item_list{
             height: 100px;
             max-width: 100%;
-            margin: 5px ;
+            margin: 5px;
             display: flex;
             flex-direction: column;
             position: relative;
             background-color: rgb(119, 119, 119);
             position: relative;
-            
             
             &:hover{
                 border-bottom: 3px white solid;
@@ -252,8 +251,6 @@ main{
                bottom: 0;
                text-align: end;
            }
-
-
         }
     }   
 }
@@ -498,6 +495,18 @@ main{
                 box-shadow: 2px 2px 9px black, inset 4px 4px 9px rgb(169, 169, 169);
                 box-sizing: border-box;
                 background-color: white;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 50px;
+                font-size: 15px;
+
+                span:not(span[class]){
+                    width: 100%;
+                    text-align: center;
+                    height: 100px;
+                    
+                }
             
                 .number_day{
                     position: absolute;

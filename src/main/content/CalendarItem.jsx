@@ -85,67 +85,10 @@ export default ({infoDay, data, saveData, dateTime }) => {
         <div className="item_calendar">
             <button className="setup_item_calendar" onClick={() => { setTime() }}></button>
             <span className="number_day">{data.numberDay}</span>
-            <span>Нормал {hours.normal} </span>
-            <span>Зам {hours.add} </span>
-            <span>Ночь {hours.night} </span>
+            <span>Основная {hours.normal} </span>
+            <span>Заместительство {hours.add} </span>
+            <span>Ночное время {hours.night} </span>
 
         </div>
     )
 }
-
-
-/*
-function setTime() {
-        const { hoursStart, minutsStart, hoursFinish, minutsFinish } = dateTime.timeWork;
-        let hours = hoursFinish - hoursStart;
-        let minut;
-        if (minutsFinish < minutsStart) {
-            hours--;
-            minut = 60 - Number(minutsStart) + Number(minutsFinish);
-        } else {
-            minut = minutsFinish - minutsStart;
-        }
-
-        switch (dateTime.typeWork) {
-            case 'addwork':
-                saveData({
-                    ...times,
-                    add: `${hours}:${minut}`,
-                }, data.numberDay);
-
-                setTimes(prev => ({
-                    ...prev,
-                    add: `${hours}:${minut}`,
-                }));
-                break;
-            case 'mainwork':
-                saveData({
-                    ...times,
-                    normal: `${hours}:${minut}`,
-                }, data.numberDay);
-
-                setTimes(prev => ({
-                    ...prev,
-                    normal: `${hours}:${minut}`,
-                }));
-                break;
-            case 'nightwork':
-                saveData({
-                    ...times,
-                    night: `${hours}:${minut}`,
-                }, data.numberDay);
-
-                setTimes(prev => ({
-                    ...prev,
-                    night: `${hours}:${minut}`,
-                }));
-                break;
-        }
-    }
-*/
-
-/*
-<span>Нормал {monthData ? monthData.normal : 0} </span>
-            <span>Зам {monthData ? monthData.add : 0} </span>
-            <span>Ночь {monthData ? monthData.night : 0} </span>
-*/
